@@ -4,8 +4,7 @@
 
 # 🧑‍💻 About me
 
-Currently an **INFOTECH student** at **Universität Stuttgart**.  
-Doing research on **Large Language Models (LLMs)**, and passionate about **AI**, **Web3**, and **Blockchain**.
+INFOTECH Master's student at **Universität Stuttgart**, passionate about **AI**, **LLMs**, **Web3**, and **Blockchain**.
 
 ## 🌐 Live Site
 
