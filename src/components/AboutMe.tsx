@@ -92,10 +92,13 @@ export default function AboutMe() {
                     </div>
                 </motion.div>
 
-                <a
+                <motion.a
                     href="/Resume_Lun-Yu_Yuan.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                     className="block mt-6 hover:opacity-80 transition duration-300"
                 >
                     <img
@@ -104,7 +107,7 @@ export default function AboutMe() {
                         className="rounded-xl shadow-lg border border-gray-700 mx-auto w-full max-w-[400px]"
                     />
                     <p className="mt-2 text-center text-sm text-gray-400">See my full resume 📄</p>
-                </a>
+                </motion.a>
 
             </div>
         </section>
