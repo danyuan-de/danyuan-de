@@ -11,6 +11,8 @@ Doing research on **Large Language Models (LLMs)**, and passionate about **AI**,
 
 🔗 [danyuan-portfolio.vercel.app](https://danyuan-portfolio.vercel.app)
 
-## 📷 Preview
+## 📷 Card
+
+Here's a snapshot of my personal portfolio ↓
 
 ![Website Preview](https://danyuan-portfolio.vercel.app/og-image.png)
