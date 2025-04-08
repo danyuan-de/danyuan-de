@@ -1,8 +1,42 @@
 @import "tailwindcss";
 
-:root {
+:root,
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --navbar-bg: rgba(15, 23, 42, 0.9);
+  --hero-bg-from: #334155;
+  --hero-bg-via: #1e293b;
+  --hero-bg-to: #1e293b;
+  --about-bg-from: #1e293b;
+  --about-bg-via: #1e2330;
+  --about-bg-to: #0f172a;
+  --contact-bg-from: #0f172a;
+  --contact-bg-via: #020617;
+  --contact-bg-to: #020617;
+  --border-color: #3b82f6;
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --text-tertiary: #9ca3af;
+}
+
+.light {
   --background: #ffffff;
   --foreground: #171717;
+  --navbar-bg: rgba(209, 213, 219, 0.9);
+  --hero-bg-from: #e5e7eb;
+  --hero-bg-via: #f3f4f6;
+  --hero-bg-to: #f3f4f6;
+  --about-bg-from: #f9fafb;
+  --about-bg-via: #f3f4f6;
+  --about-bg-to: #e5e7eb;
+  --contact-bg-from: #e5e7eb;
+  --contact-bg-via: #f3f4f6;
+  --contact-bg-to: #f9fafb;
+  --border-color: #3b82f6;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-tertiary: #6b7280;
 }
 
 @theme inline {
@@ -10,13 +44,6 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
