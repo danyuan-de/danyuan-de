@@ -1,5 +1,5 @@
 <div align="center">
-  <h1> Hello Leute <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px"></h1>
+  <h1> Hallo Leute <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px"></h1>
 </div>
 
 # 🧑‍💻 About me
@@ -12,6 +12,6 @@ INFOTECH Master's student at **Universität Stuttgart**, passionate about **AI**
 
 ## 📷 Card
 
-Here's a snapshot of my personal portfolio ↓
+Here's a snapshot of my personal profile ↓
 
 ![Website Preview](https://danyuan-portfolio.vercel.app/og-image.png)

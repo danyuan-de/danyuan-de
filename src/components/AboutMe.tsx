@@ -1,11 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function AboutMe() {
+    const { t } = useLanguage()
+
     return (
-        <section className="min-h-screen px-6 py-24 bg-gradient-to-b from-[#1e293b] via-[#1e2330] to-[#0f172a] text-white">
-            <div className="max-w-4xl mx-auto space-y-16">
+        <section id="about" className="min-h-screen px-6 py-24 bg-gradient-to-b from-[#1e293b] via-[#1e2330] to-[#0f172a] text-white">
+            <div className="max-w-7xl mx-auto space-y-16">
 
                 {/* Intro */}
                 <motion.div
@@ -14,11 +18,9 @@ export default function AboutMe() {
                     transition={{ duration: 0.6 }}
                     className="text-center"
                 >
-                    <h2 className="text-6xl font-bold mb-6">About Me</h2>
+                    <h2 className="text-6xl font-bold mb-6">{t('about.title')}</h2>
                     <p className="text-2xl text-gray-300">
-                        I&#39;m currently pursuing my Master&#39;s in Information Technology at Universität Stuttgart.
-                        I specialize in AI and Large Language Model (LLM) fine-tuning.
-                        Also, I am passionate about Web3 and blockchain. I&#39;m always eager to learn more.
+                        {t('about.intro')}
                     </p>
                 </motion.div>
 
@@ -28,10 +30,12 @@ export default function AboutMe() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.1 }}
                 >
-                    <h3 className="text-4xl font-semibold mb-2">🎓 Education</h3>
-                    <ul className="text-xl list-disc pl-6 text-gray-200 font-medium tracking-wide leading-relaxed">
-                        <li>M.Sc. in Information Technology – Universität Stuttgart (2022–2025)</li>
-                        <li>B.Sc. in Electrical Engineering – Chung Yuan Christian University (2017–2021)</li>
+                    <h3 className="text-4xl font-semibold mb-2">🎓 {t('about.education')}</h3>
+                    <ul className="text-2xl list-disc pl-6 text-gray-200 font-medium tracking-wide leading-relaxed">
+                        {t('about.master')}
+                    </ul>
+                    <ul className="text-2xl list-disc pl-6 text-gray-200 font-medium tracking-wide leading-relaxed">
+                        {t('about.bachelor')}
                     </ul>
                 </motion.div>
 
@@ -41,35 +45,40 @@ export default function AboutMe() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <h3 className="text-4xl font-semibold mb-2">💼 Work Experience</h3>
-                    <ul className="text-xl list-disc pl-6 text-gray-200 font-medium tracking-wide leading-relaxed">
-                        <li>Research Assistant – IPVS, Universität Stuttgart (2023–2025)</li>
+                    <h3 className="text-4xl font-semibold mb-2">💼 {t('about.work')}</h3>
+                    <ul className="text-2xl list-disc pl-6 text-gray-200 font-medium tracking-wide leading-relaxed">
+                        {t('about.work.research')}
                     </ul>
                 </motion.div>
 
+                {/* Skills section with fixed column widths and equal underlines */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-20 text-gray-200 text-lg pt-6"
+                    className="grid grid-cols-1 md:grid-cols-4 gap-10 text-gray-200 text-lg pt-6"
                 >
                     {/* Specializations */}
-                    <div className="flex flex-col items-start min-w-[300px]">
-                        <h3 className="text-2xl font-semibold pb-2 mb-4 border-b-2 border-gray-600 w-full">
-                            Specializations
-                        </h3>
+                    <div className="flex flex-col items-start">
+                        <div className="w-full border-b-2 border-gray-600 mb-4">
+                            <h3 className="text-2xl font-semibold pb-2">
+                                {t('about.specializations')}
+                            </h3>
+                        </div>
                         <ul className="list-disc pl-5 space-y-2">
-                            <li>AI & Machine Learning</li>
-                            <li>LLM Fine-Tuning</li>
-                            <li>Time Sensitive Network</li>
+                            <li>{t('about.specializations.ai')}</li>
+                            <li>{t('about.specializations.finetune')}</li>
+                            <li>{t('about.specializations.tsn')}</li>
                         </ul>
                     </div>
 
                     {/* Programming Languages */}
-                    <div className="flex flex-col items-start min-w-[300px]">
-                        <h3 className="text-2xl font-semibold pb-2 mb-4 border-b-2 border-gray-600 w-full">
-                            Programming Languages
-                        </h3>
+                    <div className="flex flex-col items-start">
+                        <div className="w-full border-b-2 border-gray-600 mb-4">
+                            <h3 className="text-2xl font-semibold pb-2">
+                                {t('about.programminglanguages')}
+                            </h3>
+                        </div>
                         <ul className="list-disc pl-5 space-y-2">
                             <li>Python</li>
                             <li>C/C++</li>
@@ -80,14 +89,30 @@ export default function AboutMe() {
                     </div>
 
                     {/* Tools */}
-                    <div className="flex flex-col items-start min-w-[300px]">
-                        <h3 className="text-2xl font-semibold pb-2 mb-4 border-b-2 border-gray-600 w-full">
-                            Tools
-                        </h3>
-                        <ul className="list-disc pl-5 space-y-2">
+                    <div className="flex flex-col items-start">
+                        <div className="w-full border-b-2 border-gray-600 mb-4">
+                            <h3 className="text-2xl font-semibold pb-2">
+                                {t('about.tools')}
+                            </h3>
+                        </div>
+                        <ul className=" list-disc pl-5 space-y-2">
                             <li>PyTorch</li>
                             <li>Git</li>
                             <li>OpenCL</li>
+                        </ul>
+                    </div>
+
+                    {/* Languages */}
+                    <div className="flex flex-col items-start">
+                        <div className="w-full border-b-2 border-gray-600 mb-4">
+                            <h3 className="text-2xl font-semibold pb-2">
+                                {t('about.languages')}
+                            </h3>
+                        </div>
+                        <ul className="list-disc pl-5 space-y-2 flex flex-col">
+                            <li>{t('about.languages.english')}</li>
+                            <li>{t('about.languages.chinese')}</li>
+                            <li>{t('about.languages.german')}</li>
                         </ul>
                     </div>
                 </motion.div>
@@ -101,12 +126,14 @@ export default function AboutMe() {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="block mt-6 hover:opacity-80 transition duration-300"
                 >
-                    <img
+                    <Image
                         src="/resume-preview.png"
                         alt="Resume Preview"
-                        className="rounded-xl shadow-lg border border-gray-700 mx-auto w-full max-w-[400px]"
+                        width={400}
+                        height={400}
+                        className="rounded-xl border-4 border-blue-400 shadow-lg mx-auto"
                     />
-                    <p className="mt-2 text-center text-sm text-gray-400">See my full resume 📄</p>
+                    <p className="mt-2 text-center text-sm text-gray-400">{t('about.resume')}</p>
                 </motion.a>
 
             </div>
