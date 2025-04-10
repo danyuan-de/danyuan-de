@@ -57,6 +57,23 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    // Handle language change
+    // This function is called when the user selects a new language from the dropdown
+    // It updates the localStorage and the application state
+    const handleLanguageChange = (langCode: Language) => {
+        // Update the language in localStorage
+        // This is important for persisting the user's choice across sessions
+        // and for ensuring that the application loads with the correct language on refresh
+        localStorage.setItem('language', langCode);
+
+        // Update the language in the application state
+        setLanguage(langCode);
+
+        // Close the language menu after selection
+        setLanguageMenuOpen(false);
+        setMobileMenuOpen(false);
+    }
+
     // Navigation items
     const navItems = [
         { name: t('nav.home'), href: '#home' },
@@ -142,28 +159,25 @@ export default function Navbar() {
                             </button>
 
                             {/* Language Dropdown Menu */}
-                            {languageMenuOpen ? (
+                            {languageMenuOpen && (
                                 <div
                                     className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg py-1 z-50 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'
                                         } ring-1 ring-black ring-opacity-5`}
                                 >
                                     {languages.map((item) => (
-                                        <button
+                                        <div
                                             key={item.code}
-                                            onClick={() => {
-                                                setLanguage(item.code);
-                                                setLanguageMenuOpen(false);
-                                            }}
-                                            className={`w-full text-left px-4 py-2 text-sm ${theme === 'dark'
+                                            className={`px-4 py-2 text-sm cursor-pointer ${theme === 'dark'
                                                 ? 'text-gray-300 hover:bg-gray-700'
                                                 : 'text-gray-700 hover:bg-gray-100'
                                                 } ${language === item.code ? 'font-medium text-blue-500' : ''}`}
+                                            onClick={() => handleLanguageChange(item.code)}
                                         >
                                             {item.label}
-                                        </button>
+                                        </div>
                                     ))}
                                 </div>
-                            ) : null}
+                            )}
                         </div>
                     </motion.nav>
 
@@ -191,11 +205,8 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Navigation */}
-            {mobileMenuOpen ? (
-                <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: 'auto' }}
-                    exit={{ opacity: 0, height: 0 }}
+            {mobileMenuOpen && (
+                <div
                     className={`md:hidden backdrop-blur-sm ${theme === 'dark' ? 'bg-[#0f172a]/95' : 'bg-white/95'}`}
                 >
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -221,56 +232,28 @@ export default function Navbar() {
                             <div className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}>
                                 Language:
                             </div>
-                            <div className="mt-1 relative">
-                                <button
-                                    onClick={() => setLanguageMenuOpen(!languageMenuOpen)}
-                                    className={`flex items-center justify-between w-full px-3 py-2 text-base font-medium rounded-md ${theme === 'dark' ? 'bg-gray-700 text-gray-300' : 'bg-gray-200 text-gray-700'
-                                        }`}
-                                >
-                                    <span>{getCurrentLanguageLabel()}</span>
-                                    <svg
-                                        className={`w-4 h-4 transition-transform ${languageMenuOpen ? 'rotate-180' : ''}`}
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20"
-                                        fill="currentColor"
-                                    >
-                                        <path
-                                            fillRule="evenodd"
-                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                            clipRule="evenodd"
-                                        />
-                                    </svg>
-                                </button>
-
-                                {/* Mobile Language Dropdown Menu */}
-                                {languageMenuOpen ? (
+                            <div className="mt-1 space-y-2">
+                                {languages.map((item) => (
                                     <div
-                                        className={`absolute mt-1 w-full rounded-md shadow-lg py-1 z-50 ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'
-                                            } ring-1 ring-black ring-opacity-5`}
+                                        key={item.code}
+                                        className={`block px-3 py-2 text-sm rounded cursor-pointer ${language === item.code
+                                            ? theme === 'dark'
+                                                ? 'bg-gray-700 text-blue-400'
+                                                : 'bg-gray-200 text-blue-600'
+                                            : theme === 'dark'
+                                                ? 'text-gray-300 hover:bg-gray-700 active:bg-gray-700'
+                                                : 'text-gray-700 hover:bg-gray-200 active:bg-gray-100'
+                                            }`}
+                                        onClick={() => handleLanguageChange(item.code)}
                                     >
-                                        {languages.map((item) => (
-                                            <button
-                                                key={item.code}
-                                                onClick={() => {
-                                                    setLanguage(item.code);
-                                                    setLanguageMenuOpen(false);
-                                                    setMobileMenuOpen(false);
-                                                }}
-                                                className={`w-full text-left px-4 py-2 text-sm ${theme === 'dark'
-                                                    ? 'text-gray-300 hover:bg-gray-700'
-                                                    : 'text-gray-700 hover:bg-gray-100'
-                                                    } ${language === item.code ? 'font-medium text-blue-500' : ''}`}
-                                            >
-                                                {item.label}
-                                            </button>
-                                        ))}
+                                        {item.label}
                                     </div>
-                                ) : null}
+                                ))}
                             </div>
                         </div>
                     </div>
-                </motion.div>
-            ) : null}
+                </div>
+            )}
         </header>
     )
 }
