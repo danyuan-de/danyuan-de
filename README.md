@@ -2,16 +2,14 @@
   <h1> Hallo Leute <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="25px"></h1>
 </div>
 
-# 🧑‍💻 About me
+A passionate master's graduate interested in **AI**, **LLMs**, **Blockchain**, and **Web3**.
 
-INFOTECH Master's student at **Universität Stuttgart**, passionate about **AI**, **LLMs**, **Web3**, and **Blockchain**.
+## 🛠️ Tech Stack
+- **💻 Programming Languages:** Python · C/C++ · Rust · Solidity
+- **🧠 AI & ML:** PyTorch · Transformers
+- **💾 Databases:** MySQL
+- **🐳 DevOps:** Docker · Git · GitLab CI
 
 ## 🌐 Live Site
 
 🔗 [danyuan-portfolio.vercel.app](https://danyuan-portfolio.vercel.app)
-
-## 📷 Card
-
-Here's a snapshot of my personal profile ↓
-
-![Website Preview](https://danyuan-portfolio.vercel.app/og-image.png)
