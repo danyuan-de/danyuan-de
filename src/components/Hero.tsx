@@ -112,11 +112,11 @@ export default function Hero() {
                 className="md:w-1/3"
             >
                 <Image
-                    src="/og-image.png"
+                    src="/profile_draw.png"
                     alt="Daniel Yuan"
                     width={400}
                     height={400}
-                    className="rounded-full border-4 border-blue-400 shadow-lg mx-auto"
+                    className="rounded-3xl border-4 border-blue-400 shadow-lg mx-auto"
                 />
             </motion.div>
 
